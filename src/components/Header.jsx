@@ -10,7 +10,7 @@ class Header extends React.Component{
     render() {
         return(
             <div className="header-logo">
-                <p className='rating'>Рейтинг: {this.state.rating}</p>
+                <p className='rating'>Рейтинг:{this.state.rating}</p>
                 {this.state.price !== '' ? <p className='price-logo'> {this.state.price}</p>: null}
             </div>
         )
