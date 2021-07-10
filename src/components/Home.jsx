@@ -5,24 +5,24 @@ class Home extends React.Component {
         points: [
             {
                 address: "вул.С.Бандери, 15",
-                url: '',
+                url: 'bandera',
                 check: false
             },
             {
                 address: "вул.Соборна, 25",
-                url: '',
+                url: 'soborna',
                 check: false
             },
             {
                 address: "вул.Незалежності, 42",
-                url: '',
+                url: 'nezalejnist',
                 check: false
             }
         ],
         visible: false,
         disable: true,
         url: '',
-        check: false
+        check: true
 
     }
     showPoint = () => {
@@ -31,9 +31,6 @@ class Home extends React.Component {
         })
     }
     checkList = (index) => {
-        console.log(index, ' - index');
-        console.log(this.state.points[index].check, ' - check');
-        console.log(this.state.points[index], ' - points');
         let pointsNew = this.state.points;
         this.setState({
             url: this.state.points[index].url
@@ -47,7 +44,23 @@ class Home extends React.Component {
             points: pointsNew
         })
     }
-check
+    test = (event) => {
+        let urlNew= '';
+        let pointsNew = this.state.points.map((item, index) => {
+            if(event.target.id == index) {
+                item.check = true;
+                urlNew = item.url
+                return item
+            } else {
+                item.check = false;
+                return item
+            }
+        });
+        this.setState({
+            points: pointsNew,
+            url: urlNew
+        })
+    }
 
     render() {
         return (
@@ -55,19 +68,24 @@ check
                 <div className='container'>
                     <h2>МИ В ВАШОМУ МІСТІ</h2>
                     {this.state.visible ?
-                        <ul>
+                        <div className='container'
+                        onClick={this.test}
+                        >
                             {
                                 this.state.points.map((item, index) => {
                                     return (
-                                        <li className={item.check ? 'select' : null}
-                                            key={index}
-                                            onClick={() => this.checkList(index)}>
+                                        <label htmlFor={index} className={item.check ? 'select' : null} >
+                                            <input type='radio' name='point' id={index}
+                                                key={index}
+                                                // onClick={() => this.checkList(index)}
+                                                value={item.address}
+                                            />
                                             {item.address}
-                                        </li>
+                                        </label>
                                     )
                                 })
                             }
-                        </ul>
+                        </div>
                         : null
                     }
                     {
@@ -76,7 +94,7 @@ check
                             null
                     }
                     {this.state.visible === true ?
-                        <button disabled={this.state.disable}>ПЕРЕЙТИ</button> :
+                        <button disabled={this.state.url === '' ? 'disabled' : null}>ПЕРЕЙТИ</button> :
                         null
                     }
                 </div>
