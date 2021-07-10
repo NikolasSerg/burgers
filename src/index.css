@@ -27,3 +27,15 @@
      background-color: red;
      height: 100vh;
  }
+ .input {
+     list-style-type: none;
+     list-style-position: outside;
+ }
+.input:hover {
+    background-color: aqua;
+}
+ .select {
+     background-color: aqua;
+
+     list-style-image: url("./assets/img/checked.png");
+ }

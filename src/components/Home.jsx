@@ -5,19 +5,24 @@ class Home extends React.Component {
         points: [
             {
                 address: "вул.С.Бандери, 15",
-                url: ''
+                url: '',
+                check: false
             },
             {
                 address: "вул.Соборна, 25",
-                url: ''
+                url: '',
+                check: false
             },
             {
                 address: "вул.Незалежності, 42",
-                url: ''
+                url: '',
+                check: false
             }
         ],
         visible: false,
-        disable: true
+        disable: true,
+        url: '',
+        check: false
 
     }
     showPoint = () => {
@@ -25,6 +30,24 @@ class Home extends React.Component {
             visible: !this.state.visible
         })
     }
+    checkList = (index) => {
+        console.log(index, ' - index');
+        console.log(this.state.points[index].check, ' - check');
+        console.log(this.state.points[index], ' - points');
+        let pointsNew = this.state.points;
+        this.setState({
+            url: this.state.points[index].url
+        })
+        this.setState({
+            disable: !this.state.disable
+        })
+        pointsNew[index].check = !pointsNew[index].check;
+
+        this.setState({
+            points: pointsNew
+        })
+    }
+check
 
     render() {
         return (
@@ -36,7 +59,11 @@ class Home extends React.Component {
                             {
                                 this.state.points.map((item, index) => {
                                     return (
-                                        <li key={index}>{item.address}</li>
+                                        <li className={item.check ? 'select' : null}
+                                            key={index}
+                                            onClick={() => this.checkList(index)}>
+                                            {item.address}
+                                        </li>
                                     )
                                 })
                             }
