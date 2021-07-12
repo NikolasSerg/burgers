@@ -1,14 +1,18 @@
 import React from "react";
 import './App.css';
-// import Header from "./components/Header";
-import Home from "./components/Home";
+import Router from "./components/Router";
 
-function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+class App extends React.Component {
+    state = {
+
+    }
+    render() {
+        return (
+            <div className="App">
+                <Router/>
+            </div>
+        );
+    }
 }
 
 export default App;

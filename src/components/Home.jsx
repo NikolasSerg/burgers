@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 class Home extends React.Component {
     state = {
@@ -15,7 +16,7 @@ class Home extends React.Component {
             },
             {
                 address: "вул.Незалежності, 42",
-                url: 'nezalejnist',
+                url: 'independ',
                 check: false
             }
         ],
@@ -61,26 +62,30 @@ class Home extends React.Component {
             url: urlNew
         })
     }
-
+    style = {
+        height: '100vh',
+        marginTop: '1.5rem',
+        backgroundColor: 'RGBA(255,111,0,0.55)'
+    }
     render() {
         return (
-            <div className='container'>
-                <div className='container'>
-                    <h2>МИ В ВАШОМУ МІСТІ</h2>
+            <div className='container center home' style={{height: this.style.height}}>
+                <div className='container center'>
+                    <h1 className='font-effect-fire-animation'>The HOTTEST Burgers</h1>
+                    <h2 className='font-effect-shadow-multiple'>МИ В ВАШОМУ МІСТІ</h2>
                     {this.state.visible ?
-                        <div className='container'
-                        onClick={this.test}
-                        >
+                        <div className='container' onClick={this.test} style={{backgroundColor: this.style.backgroundColor}}>
                             {
                                 this.state.points.map((item, index) => {
                                     return (
-                                        <label htmlFor={index} className={item.check ? 'select' : null} >
+                                        <label style={{fontSize: '1.4rem', padding: '0.6rem'}} htmlFor={index} className={item.check ? 'select' : null} >
                                             <input type='radio' name='point' id={index}
                                                 key={index}
                                                 // onClick={() => this.checkList(index)}
                                                 value={item.address}
                                             />
                                             {item.address}
+                                            {/*<link to={item.url}>{item.address}</link>*/}
                                         </label>
                                     )
                                 })
@@ -90,11 +95,14 @@ class Home extends React.Component {
                     }
                     {
                         this.state.visible === false ?
-                            <button onClick={this.showPoint}>ВИБРАТИ</button> :
+                            <button className='button' onClick={this.showPoint}>ВИБРАТИ</button> :
                             null
                     }
                     {this.state.visible === true ?
-                        <button disabled={this.state.url === '' ? 'disabled' : null}>ПЕРЕЙТИ</button> :
+                        <button style={{marginTop: this.style.marginTop}} className='button' disabled={this.state.url === '' ? 'disabled' : null}>
+                            <a href={this.state.url}>ПЕРЕЙТИ</a>
+                        </button>
+                        :
                         null
                     }
                 </div>

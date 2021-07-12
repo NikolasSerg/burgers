@@ -1,4 +1,7 @@
-/*HEADER -------------- start*/
+@import url('https://fonts.googleapis.com/css?family=Rancho&effect=fire-animation');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap&effect=shadow-multiple');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
 .header-logo {
     background-image: url("https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=801098427");
     background-size: cover;
@@ -6,6 +9,7 @@
     flex-direction: column;
 
 }
+
 .rating {
     padding: 0.5rem;
     border-radius: 50px 50px 50px 50px;
@@ -13,31 +17,54 @@
     margin: 1rem auto;
 
 }
+
 .price-logo {
     font-size: 60px;
     color: red;
 }
 
 /*HEADER -------------- end*/
- .container {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     background-color: red;
-     height: 100vh;
- }
-
- .input {
-     list-style-type: none;
-     list-style-position: outside;
-
- }
-.input:hover {
-    background-color: aqua;
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
 }
- .select {
-     background-color: aqua;
+.center {
+    justify-content: center;
+    align-items: center;
+}
 
-     /*list-style-image: url("./assets/img/checked.png");*/
- }
+
+.input {
+    list-style-type: none;
+    list-style-position: outside;
+
+}
+
+.select {
+    background-color: RGBA(255, 255, 255, 0.5);
+    /*padding: 1rem;*/
+    /*list-style-image: url("./assets/img/checked.png");*/
+}
+
+.home {
+    background-image: url("./assets/img/burgerHome.jpg");
+    background-size: cover;
+}
+.home h1 {
+    font-family: 'Rancho', cursive;
+    font-size: 40px;
+}
+.home h2 {
+    font-family: 'Comfortaa', cursive;
+    color: #fff;
+    text-shadow: 7px 4px 4px rgba(206,89,55,0.89);
+    background-color: RGBA(255,111,0,0.55);
+    padding: 0.6rem;
+    border-radius: 15px 30px 15px 30px;
+}
+.button {
+    padding: 0.5rem;
+    border-radius: 15px;
+    font-family: 'Caveat', cursive;
+}
