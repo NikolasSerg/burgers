@@ -69,7 +69,7 @@ class Home extends React.Component {
     }
     render() {
         return (
-            <div className='container center home' style={{height: this.style.height}}>
+            <div className='container center homeHeaderImgUrl' style={{height: this.style.height, backgroundSize: 'cover'}}>
                 <div className='container center'>
                     <h1 className='font-effect-fire-animation'>The HOTTEST Burgers</h1>
                     <h2 className='font-effect-shadow-multiple'>МИ В ВАШОМУ МІСТІ</h2>

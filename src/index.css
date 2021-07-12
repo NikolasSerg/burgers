@@ -2,28 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap&effect=shadow-multiple');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
 
-.header-logo {
-    background-image: url("https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=801098427");
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-
-}
-
 .rating {
     padding: 0.5rem;
     border-radius: 50px 50px 50px 50px;
     background-color: yellow;
     margin: 1rem auto;
-
 }
-
-.price-logo {
-    font-size: 60px;
-    color: red;
-}
-
-/*HEADER -------------- end*/
 .container {
     display: flex;
     flex-direction: column;
@@ -33,23 +17,30 @@
     justify-content: center;
     align-items: center;
 }
-
-
 .input {
     list-style-type: none;
     list-style-position: outside;
-
 }
-
 .select {
     background-color: RGBA(255, 255, 255, 0.5);
-    /*padding: 1rem;*/
-    /*list-style-image: url("./assets/img/checked.png");*/
 }
 
-.home {
+.homeHeaderImgUrl {
     background-image: url("./assets/img/burgerHome.jpg");
-    background-size: cover;
+}
+.sobornaHeaderImgUrl {
+    background-image: url("./assets/img/burgerSoborna.jpg");
+}
+.banderaHeaderImgUrl {
+    background-image: url("./assets/img/burgerBandera.jpg");
+}
+.independHeaderImgUrl {
+    background-image: url("./assets/img/burgerIndepend.jpg");
+}
+.headerConfig {
+    max-height: 400px;
+
+    min-height: 250px;
 }
 .home h1 {
     font-family: 'Rancho', cursive;
