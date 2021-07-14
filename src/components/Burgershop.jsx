@@ -5,7 +5,7 @@ export default function (props) {
     return(
         <div>
             <HomeButton />
-            <p>BANDERA</p>
+            <p>Shop</p>
             {props.props}
         </div>
     )

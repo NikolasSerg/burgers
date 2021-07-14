@@ -6,12 +6,12 @@ class Home extends React.Component {
         points: [
             {
                 address: "вул.С.Бандери, 15",
-                url: 'bandera',
+                url: '/bandera',
                 check: false
             },
             {
                 address: "вул.Соборна, 25",
-                url: 'soborna',
+                url: '/soborna',
                 check: false
             },
             {
@@ -46,9 +46,9 @@ class Home extends React.Component {
         })
     }
     test = (event) => {
-        let urlNew= '';
+        let urlNew = '';
         let pointsNew = this.state.points.map((item, index) => {
-            if(event.target.id == index) {
+            if (event.target.id == index) {
                 item.check = true;
                 urlNew = item.url
                 return item
@@ -62,27 +62,34 @@ class Home extends React.Component {
             url: urlNew
         })
     }
+    handleSendPage= (url) => {
+        this.props.history.push(`hot-burgers/${url}`)
+    }
     style = {
         height: '100vh',
         marginTop: '1.5rem',
         backgroundColor: 'RGBA(255,111,0,0.55)'
     }
+
     render() {
         return (
-            <div className='container center homeHeaderImgUrl' style={{height: this.style.height, backgroundSize: 'cover'}}>
+            <div className='container center homeHeaderImgUrl'
+                 style={{height: this.style.height, backgroundSize: 'cover'}}>
                 <div className='container center'>
                     <h1 className='font-effect-fire-animation'>The HOTTEST Burgers</h1>
                     <h2 className='font-effect-shadow-multiple'>МИ В ВАШОМУ МІСТІ</h2>
                     {this.state.visible ?
-                        <div className='container' onClick={this.test} style={{backgroundColor: this.style.backgroundColor}}>
+                        <div className='container' onClick={this.test}
+                             style={{backgroundColor: this.style.backgroundColor}}>
                             {
                                 this.state.points.map((item, index) => {
                                     return (
-                                        <label style={{fontSize: '1.4rem', padding: '0.6rem'}} htmlFor={index} className={item.check ? 'select' : null} >
+                                        <label style={{fontSize: '1.4rem', padding: '0.6rem'}} htmlFor={index}
+                                               className={item.check ? 'select' : null}>
                                             <input type='radio' name='point' id={index}
-                                                key={index}
+                                                   key={index}
                                                 // onClick={() => this.checkList(index)}
-                                                value={item.address}
+                                                   value={item.address}
                                             />
                                             {item.address}
                                             {/*<link to={item.url}>{item.address}</link>*/}
@@ -99,8 +106,11 @@ class Home extends React.Component {
                             null
                     }
                     {this.state.visible === true ?
-                        <button style={{marginTop: this.style.marginTop}} className='button' disabled={this.state.url === '' ? 'disabled' : null}>
-                            <a href={this.state.url}>ПЕРЕЙТИ</a>
+                        <button style={{marginTop: this.style.marginTop}} className='button'
+                                disabled={this.state.url === '' ? 'disabled' : null}
+                                onClick={() => this.handleSendPage(this.state.url)}
+                        >
+                            ПЕРЕЙТИ
                         </button>
                         :
                         null
