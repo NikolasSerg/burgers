@@ -9,7 +9,7 @@ export default function HomeButton() {
     }
 
     return (
-        <button type="button" onClick={handleClick}>
+        <button className='button' type="button" onClick={handleClick}>
             ГОЛОВНА
         </button>
     );

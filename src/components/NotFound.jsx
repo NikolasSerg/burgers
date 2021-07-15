@@ -1,6 +1,7 @@
 import background from '../assets/img/404.jpg'
+import HomeButton from './HomeButton';
 
-export default function () {
+export default function NotFound () {
     let style = {
         backgroundImage: `url(${background})`,
         backgroundSize: 'cover',
@@ -26,7 +27,9 @@ export default function () {
             <div style={wraper} className='container center'>
                 <h1 style={alarm}>SORRY</h1>
                 <h2 style={{color: '#e55c03', textDecoration: 'underline'}}>this page not found</h2>
+                <HomeButton />
             </div>
+
         </div>
     )
 }

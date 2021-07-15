@@ -1,17 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
 
 class Home extends React.Component {
     state = {
         points: [
             {
                 address: "вул.С.Бандери, 15",
-                url: '/bandera',
+                url: 'bandera',
                 check: false
             },
             {
                 address: "вул.Соборна, 25",
-                url: '/soborna',
+                url: 'soborna',
                 check: false
             },
             {
@@ -48,7 +47,7 @@ class Home extends React.Component {
     test = (event) => {
         let urlNew = '';
         let pointsNew = this.state.points.map((item, index) => {
-            if (event.target.id == index) {
+            if (+event.target.id === index) {
                 item.check = true;
                 urlNew = item.url
                 return item
@@ -63,7 +62,7 @@ class Home extends React.Component {
         })
     }
     handleSendPage= (url) => {
-        this.props.history.push(`hot-burgers/${url}`)
+        this.props.history.push(`/hot-burgers/${url}`)
     }
     style = {
         height: '100vh',
@@ -85,14 +84,13 @@ class Home extends React.Component {
                                 this.state.points.map((item, index) => {
                                     return (
                                         <label style={{fontSize: '1.4rem', padding: '0.6rem'}} htmlFor={index}
-                                               className={item.check ? 'select' : null}>
+                                               className={item.check ? 'select' : null} key={index}>
                                             <input type='radio' name='point' id={index}
                                                    key={index}
                                                 // onClick={() => this.checkList(index)}
                                                    value={item.address}
                                             />
                                             {item.address}
-                                            {/*<link to={item.url}>{item.address}</link>*/}
                                         </label>
                                     )
                                 })
