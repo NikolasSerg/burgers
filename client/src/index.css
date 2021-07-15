@@ -26,16 +26,16 @@
 }
 
 .homeHeaderImgUrl {
-    background-image: url("./assets/img/burgerHome.jpg");
+    background-image: url("../public/assets/img/burgerHome.jpg");
 }
 .sobornaHeaderImgUrl {
-    background-image: url("./assets/img/burgerSoborna.jpg");
+    background-image: url("../public/assets/img/burgerSoborna.jpg");
 }
 .banderaHeaderImgUrl {
-    background-image: url("./assets/img/burgerBandera.jpg");
+    background-image: url("../public/assets/img/burgerBandera.jpg");
 }
 .independHeaderImgUrl {
-    background-image: url("./assets/img/burgerIndepend.jpg");
+    background-image: url("../public/assets/img/burgerIndepend.jpg");
 }
 .headerConfig {
     max-height: 400px;

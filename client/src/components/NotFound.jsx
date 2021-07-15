@@ -1,4 +1,4 @@
-import background from '../assets/img/404.jpg'
+import background from '../../public/assets/img/404.jpg'
 import HomeButton from './HomeButton';
 
 export default function NotFound () {
