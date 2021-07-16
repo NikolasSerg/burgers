@@ -6,17 +6,14 @@ class Home extends React.Component {
             {
                 address: "вул.С.Бандери, 15",
                 url: 'bandera',
-                check: false
             },
             {
                 address: "вул.Соборна, 25",
                 url: 'soborna',
-                check: false
             },
             {
                 address: "вул.Незалежності, 42",
                 url: 'independ',
-                check: false
             }
         ],
         visible: false,

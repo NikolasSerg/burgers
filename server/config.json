@@ -1,4 +1,4 @@
 {
-  "db": "mongodb+srv://kitchenSergiu:kitchenSergiu@cluster0.lguc1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "db": "mongodb+srv://mongoSergiu:mongoSergiu@cluster0.5kxsj.mongodb.net/burgers?retryWrites=true&w=majority",
   "port": "5000"
 }
