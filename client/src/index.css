@@ -25,18 +25,6 @@
     background-color: RGBA(255, 255, 255, 0.5);
 }
 
-.homeHeaderImgUrl {
-    background-image: url("../public/assets/img/burgerHome.jpg");
-}
-.sobornaHeaderImgUrl {
-    background-image: url("../public/assets/img/burgerSoborna.jpg");
-}
-.banderaHeaderImgUrl {
-    background-image: url("../public/assets/img/burgerBandera.jpg");
-}
-.independHeaderImgUrl {
-    background-image: url("../public/assets/img/burgerIndepend.jpg");
-}
 .headerConfig {
     max-height: 400px;
 

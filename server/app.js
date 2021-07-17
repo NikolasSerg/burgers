@@ -5,6 +5,7 @@ const config = require('./config.json');
 const PORT = config.port;
 const url = config.db;
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const home = require('./routers/homepPageRoute')
 
@@ -12,17 +13,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/home', home);
+app.use(cors({
+    origin: "http://localhost:3000"
+}));
 
 try{
-    mongoose.connection.on('open', function (ref) {
-        console.log('connected to  mongoServer');
-        // console.log(mongoose.connection.db, ' - mongoose.connection.db');
-    });
-
-    mongoose.connection.on('error', function (error) {
-        console.log(error, ' - error connnect')
-    });
-
     mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true })
         .then((data) => {
 

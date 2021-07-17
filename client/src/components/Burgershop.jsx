@@ -1,7 +1,7 @@
 import React from "react";
 import HomeButton from './HomeButton';
 import Order from "./Order";
-import MenuAdmin from './MenuAdmin';
+// import MenuAdmin from './MenuAdmin';
 
 export default function Burgershop(props) {
     let style = {
@@ -24,7 +24,7 @@ export default function Burgershop(props) {
                 <Order/>
             </div>
             <div style={div}>
-                <MenuAdmin/>
+                {/*<MenuAdmin/>*/}
             </div>
         </div>
     )

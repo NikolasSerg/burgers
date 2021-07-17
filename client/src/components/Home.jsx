@@ -66,6 +66,9 @@ class Home extends React.Component {
         marginTop: '1.5rem',
         backgroundColor: 'RGBA(255,111,0,0.55)'
     }
+    componentDidMount() {
+        console.log(this.props, ' - props in Home')
+    }
 
     render() {
         return (

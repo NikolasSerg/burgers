@@ -10,17 +10,6 @@ module.exports.getAll = async function (req, res) {
         })
     }
 }
-
-// module.exports.getOne = async function (req, res) {
-//     try {
-//         const page = await Shop.findOne({url: "test2"});
-//         res.status(200).json(page);
-//     } catch (e) {
-//         res.status(500).json({
-//             message: "вибачте дядку шось то стало з getAll pageControler"
-//         })
-//     }
-// }
 module.exports.create = async function (req, res) {
     console.log(req.body, ' --req.body');
     let shop = new Shop({
