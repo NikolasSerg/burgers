@@ -6,3 +6,4 @@ router.get('/', shopsController.getAll);
 router.post('/create', shopsController.create);
 
 module.exports = router;
+
