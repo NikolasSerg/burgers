@@ -1,14 +1,11 @@
 import React from "react";
-
-
 import './App.scss';
-import Router from "./components/Router";
+import Home from "./components/Home";
 
 function App() {
-
     return (
         <div className="App">
-            <Router shops={this.state.shops}/>
+             <Home />
         </div>
     );
 

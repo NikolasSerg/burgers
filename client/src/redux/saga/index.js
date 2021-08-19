@@ -1,6 +1,6 @@
 import {all} from 'redux-saga/effects';
-import {loadShops} from "../store/reduserShops";
+import {watcherLoadShops} from "./loadShops";
 
 export function* rootWatcher() {
-    yield all([loadShops()])
+    yield all([watcherLoadShops()])
 }

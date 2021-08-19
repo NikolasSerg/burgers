@@ -6,6 +6,11 @@ const PORT = config.port;
 const url = config.db;
 const bodyParser = require('body-parser');
 const cors = require('cors');
+app.use(
+    cors({
+        origin: "*",
+    })
+);
 
 const home = require('./routers/homepPageRoute')
 
@@ -13,12 +18,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/home', home);
-app.use(cors({
-    origin: "http://localhost:3000"
-}));
 
-try{
-    mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true })
+try {
+    mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
         .then((data) => {
 
             console.log('підключення до монгоДб успішне')
@@ -27,10 +29,9 @@ try{
             console.log(e, ' - помилка зєднання з базою');
         })
 
-    app.listen(PORT,() => {
+    app.listen(PORT, () => {
         console.log(`server works on ${PORT} port`)
     })
-}
-catch (e) {
+} catch (e) {
     console.error('шось не те зі зєднанням до бази')
 }

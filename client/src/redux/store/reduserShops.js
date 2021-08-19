@@ -1,9 +1,11 @@
-import {FETCH_SHOPS} from  '../types';
+import {FETCH_SHOPS, SET_SHOPS} from '../types';
 
-const initialState = [];
+const initialState = {
+    shops: []
+};
 export default function shopsReducers (state = initialState, action) {
     switch (action.type) {
-        case FETCH_SHOPS:
+        case SET_SHOPS:
         return {...state, shops: action.payload};
 
         default:
@@ -11,4 +13,5 @@ export default function shopsReducers (state = initialState, action) {
     }
 }
 
-export const loadShops = (payload) => ({type: FETCH_SHOPS, payload})
+export const loadShops = (payload) => ({type: SET_SHOPS, payload})
+export const asyncloadShops = () => ({type: FETCH_SHOPS})
