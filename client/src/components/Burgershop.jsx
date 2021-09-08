@@ -1,6 +1,6 @@
 import React from "react";
 import HomeButton from './HomeButton';
-import Order from "./Order";
+import Order from "./pages/Order";
 // import MenuAdmin from './MenuAdmin';
 
 export default function Burgershop(props) {
