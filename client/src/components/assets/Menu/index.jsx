@@ -10,6 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles({
     list: {
@@ -18,9 +19,15 @@ const useStyles = makeStyles({
     fullList: {
         width: 'auto',
     },
+    icon: {
+        width: '25px',
+        height: '25px',
+        display: 'flex'
+    }
 });
 
-export default function Menu() {
+export default function Menu(props) {
+    const side = props.props;
     const classes = useStyles();
     const [state, setState] = React.useState({
         top: false,
@@ -68,14 +75,14 @@ export default function Menu() {
 
     return (
         <div>
-            {['left', 'right', 'top', 'bottom'].map((anchor) => (
-                <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-                    <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-                        {list(anchor)}
+
+                <React.Fragment>
+                    <MenuIcon className={classes.icon} onClick={toggleDrawer('left', true)}/>
+                    <Drawer anchor={side} open={state[side]} onClose={toggleDrawer(side, false)}>
+                        {list(side)}
                     </Drawer>
                 </React.Fragment>
-            ))}
+
         </div>
     );
 }

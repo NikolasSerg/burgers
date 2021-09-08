@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+  import React, {useEffect, useState} from "react";
 import './App.scss';
 import Home from "./components/pages/Home";
 import {useDispatch, useSelector} from "react-redux";
@@ -6,7 +6,6 @@ import {asyncloadShops} from "./redux/store/reduserShops";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Bandera from "./components/pages/Bandera";
 import Menu from "./components/assets/Menu";
-
 
 function App() {
     const shops = useSelector(state => state.shopsReducers.shops);
@@ -25,6 +24,7 @@ function App() {
         setState(newState);
     }, [shops]);
 
+    const test = 'left'
 
     return (
         <BrowserRouter>
@@ -35,7 +35,9 @@ function App() {
                 <Route path="/bandera">
                     <Bandera  {...state.bandera}/>
                 </Route>
-                <Route path="/admin" component={Menu}/>
+                <Route path="/menu" >
+                    <Menu props='left' />
+                </Route>
 
             </Switch>
         </BrowserRouter>
