@@ -4,8 +4,8 @@ import Home from "./components/pages/Home";
 import {useDispatch, useSelector} from "react-redux";
 import {asyncloadShops} from "./redux/store/reduserShops";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import Bandera from "./components/pages/Bandera";
-import Menu from "./components/assets/Menu";
+import Template from "./components/pages/Template";
+import NotFound from "./components/pages/NotFound";
 
 function App() {
     const shops = useSelector(state => state.shopsReducers.shops);
@@ -41,17 +41,12 @@ function App() {
                     state.map(item => {
                         return (
                             <Route path={`/${item.url}`} key={item._id}>
-                                <Bandera {...item}/>
+                                <Template {...item}/>
                             </Route>
                         )
                     })
                 }
-                {/*<Route path="/bandera">*/}
-                {/*    <Bandera  {...state.bandera}/>*/}
-                {/*</Route>*/}
-                <Route path="/menu" >
-                    <Menu props='left' />
-                </Route>
+                <Route component={NotFound} />
 
             </Switch>
         </BrowserRouter>

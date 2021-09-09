@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/styles';
 import {Box, Button, Container, CssBaseline, FormControl, InputLabel, MenuItem, Select} from "@material-ui/core";
 import {Link, Route, useHistory} from 'react-router-dom';
-import Bandera from "./Bandera";
+import Template from "./Template";
+import {useDispatch} from "react-redux";
+import {loadCurrentPage} from "../../redux/store/reducerCurentPage";
 
 const useStyles = makeStyles({
     wrapper: {
@@ -30,7 +32,7 @@ const useStyles = makeStyles({
     }
 })
 let initialState = {
-    currentShopUrl: '',
+    currentShop: '',
     disabled: true
 }
 
@@ -38,9 +40,11 @@ function Home(props) {
     const history = useHistory();
     const classes = useStyles();
     const [state, setState] = useState(initialState);
+    const dispatch = useDispatch();
+
     const onHandleSelect = (event) => {
         let newState = {...state};
-        newState.currentShopUrl = event.target.value;
+        newState.currentShop = event.target.value;
         newState.disabled = false;
 
         setState(newState);
@@ -48,7 +52,8 @@ function Home(props) {
     }
     const urlHandle = () => {
         console.log('click BTN');
-        history.push(`/${state.currentShopUrl}`);
+        history.push(`/${state.currentShop.url}`);
+        dispatch(loadCurrentPage(state.currentShop));
     }
     return (
 
@@ -68,7 +73,7 @@ function Home(props) {
                             onChange={onHandleSelect}>
                         {
                             props.shops.map((item, index) => {
-                                return <MenuItem key={index} value={item.url}>{item.address}</MenuItem>
+                                return <MenuItem key={index} value={item}>{item.address}</MenuItem>
                             })
                         }
                     </Select>

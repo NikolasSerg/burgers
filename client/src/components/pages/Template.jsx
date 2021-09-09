@@ -1,12 +1,10 @@
 import React from 'react';
-import NavBar from '../assets/Navbar';
 import Card from '../assets/Card';
 import {makeStyles} from '@material-ui/core/styles';
 import {Container, CssBaseline} from "@material-ui/core";
-import HomeBtn from "../assets/HomeBtn";
 import Header from "../assets/Header";
 
-function Bandera(props) {
+function Template(props) {
     const useStyles = makeStyles((theme) => ({
         formControl: {
             margin: theme.spacing(1),
@@ -20,14 +18,12 @@ function Bandera(props) {
     return (
         <>
             <CssBaseline/>
-            {/*<NavBar address={props.address}/>*/}
             <Header {...props}/>
             <Container>
                 <Card/>
-                <HomeBtn />
             </Container>
         </>
     )
 }
 
-export default Bandera;
+export default Template;
