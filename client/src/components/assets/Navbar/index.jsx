@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography, Button, IconButton, Drawer} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu from "../Menu";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,9 +24,13 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function ButtonAppBar(props) {
-    const classes = useStyles();
 
+export default function Navbar({...props}) {
+    const classes = useStyles();
+    const history = useHistory();
+    const onHandleMain = () => {
+        history.push('/')
+    }
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -36,11 +41,12 @@ export default function ButtonAppBar(props) {
                     <Typography variant="h6" className={classes.title}>
                         {props.address}
                     </Typography>
-                    <Button color="inherit" className={classes.icon}>
-                        <img src="/assets/img/burger_icon_32*32-2.png" alt="icon"/>
+                    <Button color="inherit" className={classes.icon} onClick={onHandleMain}>
+                        <img src="/assets/img/burger_icon_32*32.png" alt="icon"/>
                     </Button>
                 </Toolbar>
             </AppBar>
         </div>
     );
 }
+

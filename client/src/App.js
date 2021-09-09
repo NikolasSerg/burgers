@@ -17,24 +17,38 @@ function App() {
         console.log('dispatch')
     }, []);
     useEffect(() => {
-        let newState = {};
-        shops.map((i) => {
-            newState[i['url']] = i
-        })
-        setState(newState);
+        // let newState = {};
+        // shops.map((i) => {
+        //     newState[i['url']] = i
+        // })
+
+        // setState(newState);
+        setState(shops);
     }, [shops]);
 
     const test = 'left'
+    const onChangeUrl = () => {
+        console.log('TEST')
+    }
 
     return (
         <BrowserRouter>
             <Switch>
                 <Route exact path="/">
-                    <Home shops={shops}/>
+                    <Home shops={shops} urlChange={onChangeUrl}/>
                 </Route>
-                <Route path="/bandera">
-                    <Bandera  {...state.bandera}/>
-                </Route>
+                {
+                    state.map(item => {
+                        return (
+                            <Route path={`/${item.url}`} key={item._id}>
+                                <Bandera {...item}/>
+                            </Route>
+                        )
+                    })
+                }
+                {/*<Route path="/bandera">*/}
+                {/*    <Bandera  {...state.bandera}/>*/}
+                {/*</Route>*/}
                 <Route path="/menu" >
                     <Menu props='left' />
                 </Route>

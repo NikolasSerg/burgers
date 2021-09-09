@@ -4,7 +4,7 @@ import Card from '../assets/Card';
 import {makeStyles} from '@material-ui/core/styles';
 import {Container, CssBaseline} from "@material-ui/core";
 import HomeBtn from "../assets/HomeBtn";
-
+import Header from "../assets/Header";
 
 function Bandera(props) {
     const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,8 @@ function Bandera(props) {
     return (
         <>
             <CssBaseline/>
-            <NavBar address={props.address}/>
+            {/*<NavBar address={props.address}/>*/}
+            <Header {...props}/>
             <Container>
                 <Card/>
                 <HomeBtn />

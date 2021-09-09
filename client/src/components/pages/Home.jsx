@@ -30,25 +30,25 @@ const useStyles = makeStyles({
     }
 })
 let initialState = {
-    url: '',
+    currentShopUrl: '',
     disabled: true
 }
 
-function Home({shops}) {
+function Home(props) {
     const history = useHistory();
     const classes = useStyles();
     const [state, setState] = useState(initialState);
     const onHandleSelect = (event) => {
         let newState = {...state};
-        newState.url = event.target.url;
+        newState.currentShopUrl = event.target.value;
         newState.disabled = false;
 
         setState(newState);
         console.log(event.target.value, ' - event')
     }
-    const testHandle = () => {
+    const urlHandle = () => {
         console.log('click BTN');
-        history.push('/bandera');
+        history.push(`/${state.currentShopUrl}`);
     }
     return (
 
@@ -67,7 +67,7 @@ function Home({shops}) {
                     <Select labelId='burger-shops' label='burgers shop' className={classes.select}
                             onChange={onHandleSelect}>
                         {
-                            shops.map((item, index) => {
+                            props.shops.map((item, index) => {
                                 return <MenuItem key={index} value={item.url}>{item.address}</MenuItem>
                             })
                         }
@@ -76,7 +76,7 @@ function Home({shops}) {
                             style={{margin: "1.5rem auto", width: "200px"}}
                             color="primary"
                             disabled={state.disabled}
-                            onClick={testHandle}
+                            onClick={urlHandle}
                     >
                         ПЕРЕЙТИ
                     </Button>

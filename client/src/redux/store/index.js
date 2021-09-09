@@ -3,11 +3,13 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import {rootWatcher} from "../saga";
 import shopsReducers from './reduserShops';
+import currentPageReducer from "./reducerCurentPage";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
-    shopsReducers
+    shopsReducers,
+    currentPageReducer
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)))
