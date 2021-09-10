@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const shopSchema = new Schema({
+const shopListSchema = new Schema({
     address: {
         type: String,
         required: true
@@ -12,4 +12,4 @@ const shopSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('shops ', shopSchema);
+module.exports = mongoose.model('short_list_shops', shopListSchema);

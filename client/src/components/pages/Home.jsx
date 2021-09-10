@@ -49,6 +49,9 @@ function Home(props) {
 
         setState(newState);
         console.log(event.target.value, ' - event')
+        props.test(event.target.value)
+        console.log('test  item')
+
     }
     const urlHandle = () => {
         console.log('click BTN');

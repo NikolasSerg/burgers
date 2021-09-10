@@ -6,7 +6,7 @@ import currentPageReducer from "../../../redux/store/reducerCurentPage";
 
 const Banner = (props) => {
 
-    const currentShop = useSelector(state => state.currentPageReducer);
+    const currentShop = useSelector(state => state.currentPageReducer.currentShop);
 
     const useStyles = makeStyles((theme) => ({
         banner: {
