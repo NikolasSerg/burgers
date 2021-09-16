@@ -10,7 +10,6 @@ const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
     shopsReducers,
-    currentPageReducer,
     currentShopReducer
 })
 
