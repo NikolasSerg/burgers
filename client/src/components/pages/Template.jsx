@@ -1,25 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Card from '../assets/Card';
-import {makeStyles} from '@material-ui/core/styles';
 import {Container, CssBaseline} from "@material-ui/core";
 import Header from "../assets/Header";
 
 function Template(props) {
-    const useStyles = makeStyles((theme) => ({
-        formControl: {
-            margin: theme.spacing(1),
-            minWidth: 120,
-        },
-        selectEmpty: {
-            marginTop: theme.spacing(2),
-        },
-    }));
-
+    useEffect(() => {
+        let current = localStorage.getItem('currentPage');
+        if(current !== null) {
+            console.log('ДАНІ Є В СТОРІДЖ TEMPLATE')
+        }
+    }, [])
     return (
         <>
             <CssBaseline/>
             <Header {...props}/>
             <Container>
+                {props.address}
                 <Card/>
             </Container>
         </>

@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/styles';
-import {Box, Button, Container, CssBaseline, FormControl, InputLabel, MenuItem, Select} from "@material-ui/core";
-import {Link, Route, useHistory} from 'react-router-dom';
-import Template from "./Template";
-import {useDispatch} from "react-redux";
-import {loadCurrentPage} from "../../redux/store/reducerCurentPage";
+import {Box, Button, CssBaseline, FormControl, InputLabel, MenuItem, Select} from "@material-ui/core";
+import {useHistory} from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux";
+import {loadCurrentPage} from "../../redux/store/reducerCurrentPage";
+import currentShopReducer, {loadCurrentShop} from "../../redux/store/reducerCurrentShop";
 
 const useStyles = makeStyles({
     wrapper: {
@@ -41,25 +41,27 @@ function Home(props) {
     const classes = useStyles();
     const [state, setState] = useState(initialState);
     const dispatch = useDispatch();
+    // const currentShop = useSelector(state => state.currentShopReducer.currentShop)
 
     const onHandleSelect = (event) => {
         let newState = {...state};
         newState.currentShop = event.target.value;
         newState.disabled = false;
 
-        setState(newState);
-        console.log(event.target.value, ' - event')
-        props.test(event.target.value)
-        console.log('test  item')
+        props.urlChange(event.target.value)
 
+        setState(newState);
     }
+
     const urlHandle = () => {
         console.log('click BTN');
         history.push(`/${state.currentShop.url}`);
-        dispatch(loadCurrentPage(state.currentShop));
+        dispatch(loadCurrentShop(state.currentShop));
     }
+    useEffect(() => {
+        console.log('RELOAD HOME')
+    } , [])
     return (
-
         <Box sx={{
             height: "100vh",
             backgroundImage: "url('./assets/img/burgerHome.jpg')",
@@ -73,7 +75,7 @@ function Home(props) {
                 <FormControl variant="outlined">
                     <InputLabel id='burger-shops'>burgers shop</InputLabel>
                     <Select labelId='burger-shops' label='burgers shop' className={classes.select}
-                            onChange={onHandleSelect}>
+                            onChange={onHandleSelect} value={state.currentShop}>
                         {
                             props.shops.map((item, index) => {
                                 return <MenuItem key={index} value={item}>{item.address}</MenuItem>

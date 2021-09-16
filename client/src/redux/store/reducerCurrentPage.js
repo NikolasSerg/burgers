@@ -4,9 +4,10 @@ const initialState = {
     currentShop: {}
 }
 
-export default function currentPageReducer(state = initialState, action) {
+export default function currentPageReducer(state = {}, action) {
     switch (action.type) {
         case SET_CURRENT_PAGE:
+            console.log(action.payload, ' - action.payload in REDUCER')
             return {...state, currentShop: action.payload};
 
         default:
@@ -16,3 +17,4 @@ export default function currentPageReducer(state = initialState, action) {
 }
 
 export const loadCurrentPage = (payload) => ({type: SET_CURRENT_PAGE, payload});
+

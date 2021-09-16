@@ -1,6 +1,4 @@
 import background from '../assets/img/404.jpg'
-
-import HomeBtn from '../assets/HomeBtn';
 import {Box, Button, Card, Container, CssBaseline, Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import React from "react";

@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const shopListSchema = new Schema({
-    address: {
+const SobornaShop = new Schema({
+    menu: {
+        type: Array
+    },
+    banner: {
         type: String,
         required: true
     },
-    url: {
+    address: {
         type: String,
         required: true
     }
 });
 
-module.exports = mongoose.model('short_list_shops', shopListSchema);
+module.exports = mongoose.model('soborna', SobornaShop);

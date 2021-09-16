@@ -1,4 +1,7 @@
 export const FETCH_SHOPS = "FETCH_SHOPS";
 export const SET_SHOPS = "SET_SHOPS";
 
+export const FETCH_CURRENT_SHOP = "FETCH_CURRENT_SHOP";
+export const SET_CURRENT_SHOP = "SET_CURRENT_SHOP";
+
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
