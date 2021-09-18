@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/styles';
 import {Box, Button, CssBaseline, FormControl, InputLabel, MenuItem, Select,} from "@material-ui/core";
 import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import {loadCurrentPage} from "../../redux/store/reducerCurrentPage";
+import {loadCurrentPage} from "../../redux/store/reducerCurrentShop";
 import currentShopReducer, {loadCurrentShop} from "../../redux/store/reducerCurrentShop";
 
 const useStyles = makeStyles({

@@ -13,13 +13,11 @@ app.use(
 );
 
 const home = require('./routers/homepPageRoute');
-const soborna = require('./routers/sobornaRoute');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/home', home);
-app.use('/soborna', soborna);
 
 try {
     mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})

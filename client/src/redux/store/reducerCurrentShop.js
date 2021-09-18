@@ -1,17 +1,20 @@
-import {FETCH_CURRENT_SHOP} from "../types";
-
+import {SET_CURRENT_SHOP} from "../types";
 
 const initialState = {
     currentShop: {}
 }
 
-export default function currentShopReducer(state = initialState, action) {
+export default function currentShopReducer(state = {}, action) {
     switch (action.type) {
-        case FETCH_CURRENT_SHOP:
+        case SET_CURRENT_SHOP:
+            console.log(action.payload, ' - action.payload in REDUCER')
             return {...state, currentShop: action.payload};
 
         default:
             return state;
     }
+
 }
-export const loadCurrentShop = (payload) => ({type: FETCH_CURRENT_SHOP, payload})
+
+export const loadCurrentShop = (payload) => ({type: SET_CURRENT_SHOP, payload});
+

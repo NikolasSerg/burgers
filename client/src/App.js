@@ -3,7 +3,7 @@ import './App.scss';
 import Home from "./components/pages/Home";
 import {useDispatch, useSelector} from "react-redux";
 import {asyncloadShops} from "./redux/store/reduserShops";
-import {loadCurrentPage} from "./redux/store/reducerCurrentPage";
+import {loadCurrentShop} from "./redux/store/reducerCurrentShop";
 import {withRouter, Route, Switch} from "react-router-dom";
 import Template from "./components/pages/Template";
 import NotFound from "./components/pages/NotFound";
@@ -15,6 +15,7 @@ export default withRouter(function App({location}) {
     const [state, setState] = useState([]);
     // const [currentPage, setCurrentPage] = useState([]);
     const dispatch = useDispatch();
+    let current = '';
 
     useEffect(() => {
         dispatch(asyncloadShops())
@@ -22,7 +23,7 @@ export default withRouter(function App({location}) {
         let current = localStorage.getItem('currentPage');
         if(current !== null) {
             console.log('ДАНІ Є В СТОРІДЖ APP');
-            dispatch(loadCurrentPage(JSON.parse(current)));
+            dispatch(loadCurrentShop(JSON.parse(current)));
         }
 
     },  []);
@@ -32,16 +33,17 @@ export default withRouter(function App({location}) {
     }, [shops]);
 
     useEffect(() => {
-        console.log('URL CHANGES')
+        console.log('URL CHANGES');
+        dispatch(loadCurrentShop(current));
     }, [location.pathname]);
 
     const onChangeUrl = (item) => {
         console.log(item, ' - item in App');
         // setCurrentPage(item);
-        dispatch(loadCurrentPage(item));
-        // let current = JSON.stringify(item);
-        // localStorage.setItem('currentPage', current);
-        // dispatch(loadCurrentPage(current));
+        dispatch(loadCurrentShop(item));
+        current = JSON.stringify(item);
+        localStorage.setItem('currentPage', current);
+
     }
 
     return (

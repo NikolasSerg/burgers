@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 
 const Banner = (props) => {
     const [image, setImage] = useState();
-    const currentShop = useSelector(state => state.currentPageReducer.currentShop);
+    const currentShop = useSelector(state => state.currentShopReducer.currentShop);
 
     useEffect(() => {
         if (currentShop !== null) {
