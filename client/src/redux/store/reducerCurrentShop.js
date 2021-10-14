@@ -16,5 +16,5 @@ export default function currentShopReducer(state = {}, action) {
 
 }
 
-export const loadCurrentShop = (payload) => ({type: SET_CURRENT_SHOP, payload});
+export const CurrentShop = (payload) => ({type: SET_CURRENT_SHOP, payload});
 

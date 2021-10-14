@@ -1,5 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
+import {Box} from "@material-ui/core";
 
 export default function HomeButton() {
     let history = useHistory();
@@ -9,8 +10,10 @@ export default function HomeButton() {
     }
 
     return (
-        <button className='button' type="button" onClick={handleClick}>
-            ГОЛОВНА
-        </button>
+        <Box>
+            <button className='button' type="button" onClick={handleClick}>
+                ГОЛОВНА
+            </button>
+        </Box>
     );
 }

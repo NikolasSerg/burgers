@@ -4,17 +4,31 @@ import {useSelector} from "react-redux";
 
 
 const Banner = (props) => {
-    const [image, setImage] = useState();
+    const [image, setImage] = useState(false);
+    const [page, setPage] = useState(false);
     const currentShop = useSelector(state => state.currentShopReducer.currentShop);
 
     useEffect(() => {
-        if (currentShop !== null) {
-            import(`../img/${currentShop.img}`).then(data => {
-                console.log(data, ' - data IMG');
+        if(localStorage.getItem('currentPage')) {
+            let data = JSON.parse(localStorage.getItem('currentPage'))
+            setPage(data);
+            import(`../img/${data.img}`).then(data => {
                 setImage(data.default)
             })
+        } else {
+            import(`../img/${currentShop.img}`).then(data => {
+                setImage(data.default)
+            });
+            setPage(currentShop);
         }
+
     }, [currentShop])
+
+    useEffect(() => {
+        if(localStorage.getItem('currentPage') !== null) {
+            localStorage.getItem('currentPage')
+        }
+    } , [])
 
     const useStyles = makeStyles((theme) => ({
         banner: {
@@ -51,8 +65,10 @@ const Banner = (props) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.banner + ' ' + classes.media}>
-            <img src={image} alt="banner" className={classes.img}/>
+        <div>
+            <div className={classes.banner + ' ' + classes.media}>
+                <img src={image} alt="banner" className={classes.img}/>
+            </div>
         </div>
     )
 };

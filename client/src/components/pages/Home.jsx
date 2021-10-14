@@ -3,8 +3,7 @@ import {makeStyles} from '@material-ui/styles';
 import {Box, Button, CssBaseline, FormControl, InputLabel, MenuItem, Select,} from "@material-ui/core";
 import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import {loadCurrentPage} from "../../redux/store/reducerCurrentShop";
-import currentShopReducer, {loadCurrentShop} from "../../redux/store/reducerCurrentShop";
+import {CurrentShop} from "../../redux/store/reducerCurrentShop";
 
 const useStyles = makeStyles({
     wrapper: {
@@ -31,36 +30,32 @@ const useStyles = makeStyles({
         width: "200px"
     }
 })
-let initialState = {
-    currentShop: '',
-    disabled: true
-}
+
 
 function Home(props) {
     const history = useHistory();
     const classes = useStyles();
-    const [state, setState] = useState(initialState);
+    const [currentShop, setCurrentShop] = useState('');
+    const [btnDisabled, setBtnDisabled] = useState(true);
     const dispatch = useDispatch();
     // const currentShop = useSelector(state => state.currentShopReducer.currentShop)
 
     const onHandleSelect = (event) => {
-        let newState = {...state};
-        newState.currentShop = event.target.value;
-        newState.disabled = false;
-
-        props.urlChange(event.target.value)
-
-        setState(newState);
-    }
+        setBtnDisabled(false);
+        setCurrentShop(event.target.value);
+     }
 
     const urlHandle = () => {
         console.log('click BTN');
-        history.push(`/${state.currentShop.url}`);
-        dispatch(loadCurrentShop(state.currentShop));
+        history.push(`/${currentShop.url}`);
+        dispatch(CurrentShop(currentShop));
     }
     useEffect(() => {
-        console.log('RELOAD HOME')
-    } , [])
+        dispatch(CurrentShop(currentShop));
+        localStorage.setItem('currentPage', JSON.stringify(currentShop));
+        console.log('effect work')
+    } , [currentShop])
+
     return (
         <Box sx={{
             height: "100vh",
@@ -75,17 +70,17 @@ function Home(props) {
                 <FormControl variant="outlined">
                     <InputLabel id='burger-shops'>burgers shop</InputLabel>
                     <Select labelId='burger-shops' label='burgers shop' className={classes.select}
-                            onChange={onHandleSelect} value={state.currentShop}>
+                            onChange={onHandleSelect} value={currentShop}>
                         {
                             props.shops.map((item, index) => {
                                 return <MenuItem key={index} value={item}>{item.address}</MenuItem>
                             })
                         }
                     </Select>
-                    <Button variant={state.disabled === true ? 'outlined' : 'contained'}
+                    <Button variant={btnDisabled === true ? 'outlined' : 'contained'}
                             style={{margin: "1.5rem auto", width: "200px"}}
                             color="primary"
-                            disabled={state.disabled}
+                            disabled={btnDisabled}
                             onClick={urlHandle}
                     >
                         ПЕРЕЙТИ

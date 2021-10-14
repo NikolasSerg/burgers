@@ -3,7 +3,7 @@ import './App.scss';
 import Home from "./components/pages/Home";
 import {useDispatch, useSelector} from "react-redux";
 import {asyncloadShops} from "./redux/store/reduserShops";
-import {loadCurrentShop} from "./redux/store/reducerCurrentShop";
+import {CurrentShop} from "./redux/store/reducerCurrentShop";
 import {withRouter, Route, Switch} from "react-router-dom";
 import Template from "./components/pages/Template";
 import NotFound from "./components/pages/NotFound";
@@ -20,11 +20,11 @@ export default withRouter(function App({location}) {
     useEffect(() => {
         dispatch(asyncloadShops())
         console.log('dispatch');
-        let current = localStorage.getItem('currentPage');
-        if(current !== null) {
-            console.log('ДАНІ Є В СТОРІДЖ APP');
-            dispatch(loadCurrentShop(JSON.parse(current)));
-        }
+        // let current = localStorage.getItem('currentPage');
+        // if(current !== null) {
+        //     console.log('ДАНІ Є В СТОРІДЖ APP');
+        //     dispatch(CurrentShop(JSON.parse(current)));
+        // }
 
     },  []);
 
@@ -32,24 +32,15 @@ export default withRouter(function App({location}) {
         setState(shops);
     }, [shops]);
 
-    useEffect(() => {
-        console.log('URL CHANGES');
-        dispatch(loadCurrentShop(current));
-    }, [location.pathname]);
-
-    const onChangeUrl = (item) => {
-        console.log(item, ' - item in App');
-        // setCurrentPage(item);
-        dispatch(loadCurrentShop(item));
-        current = JSON.stringify(item);
-        localStorage.setItem('currentPage', current);
-
-    }
+    // useEffect(() => {
+    //     console.log('URL CHANGES');
+    //     dispatch(CurrentShop(current));
+    // }, [location.pathname]);
 
     return (
             <Switch>
                 <Route exact path="/">
-                    <Home shops={shops} urlChange={onChangeUrl} />
+                    <Home shops={shops} />
                 </Route>
                 {
                     state.map(item => {

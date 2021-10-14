@@ -13,7 +13,7 @@ function Template(props) {
     return (
         <>
             <CssBaseline/>
-            <Header {...props}/>
+            <Header />
             <Container>
                 {props.address}
                 <Card/>
